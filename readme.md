@@ -1,0 +1,214 @@
+Instruction Manual
+================
+
+### The directory structure of the project is as follows: The purpose of each script within the ‘main_scripts’ and ‘generate_plots’ folders is documented directly in the respective script itself.
+
+
+    |-- Model_Robust_Bayesian_Designs_for_Monitoring_of_Submerged_Shoals
+      ||-- codes
+      |  ||-- designs
+      |  |  ||-- GAMM
+      |  |  |  ||-- without_yre
+      |  |  |  |  |-- 0_initial_utility.R
+      |  |  |  |  |-- 1_approximate_utility_angle.R
+      |  |  |  |  |-- 2_remaining_angles.R
+      |  |  |  |  |-- 3_approximate_utility_angle_rest.R
+      |  |  |  |  |-- 4_optimize_angle_ACE.R
+      |  |  |  |  |-- 5_summarize_transect.R
+      |  |  |  |  |-- 6_optimize_angle_ACE_rest.R
+      |  |  |  |  |-- 7_compare_iteration.R
+      |  |  |  |  |-- approximate_utility_GAMM.R
+      |  |  |  ||-- with_yre
+      |  |  |  |  |-- 0_initial_utility.R
+      |  |  |  |  |-- 1_approximate_utility_angle.R
+      |  |  |  |  |-- 2_remaining_angles.R
+      |  |  |  |  |-- 3_approximate_utility_angle_rest.R
+      |  |  |  |  |-- 4_optimize_angle_ACE.R
+      |  |  |  |  |-- 5_summarize_transect.R
+      |  |  |  |  |-- 6_optimize_angle_ACE_rest.R
+      |  |  |  |  |-- 7_compare_iteration.R
+      |  |  |  |  |-- approximate_utility_GAMM.R
+      |  |  ||-- polynomial
+      |  |  |  ||-- without_yre
+      |  |  |  |  |-- 0_initial_utility.R
+      |  |  |  |  |-- 1_approximate_utility_angle.R
+      |  |  |  |  |-- 2_remaining_angles.R
+      |  |  |  |  |-- 3_approximate_utility_angle_rest.R
+      |  |  |  |  |-- 4_optimize_angle_ACE.R
+      |  |  |  |  |-- 5_summarize_transect.R
+      |  |  |  |  |-- 6_optimize_angle_ACE_rest.R
+      |  |  |  |  |-- 7_compare_iteration.R
+      |  |  |  |  |-- approximate_utility_pol.R
+      |  |  |  ||-- with_yre
+      |  |  |  |  |-- 0_initial_utility.R
+      |  |  |  |  |-- 1_approximate_utility_angle.R
+      |  |  |  |  |-- 2_remaining_angles.R
+      |  |  |  |  |-- 3_approximate_utility_angle_rest.R
+      |  |  |  |  |-- 4_optimize_angle_ACE.R
+      |  |  |  |  |-- 5_summarize_transect.R
+      |  |  |  |  |-- 6_optimize_angle_ACE_rest.R
+      |  |  |  |  |-- 7_compare_iteration.R
+      |  |  |  |  |-- approximate_utility_pol.R
+      |  |  |-- select_optimal_design.R
+      |  ||-- functions
+      |  |  |-- ace_transect_parallel.R
+      |  |  |-- automated_Laplace.R
+      |  |  |-- automated_Laplace_tp.R
+      |  |  |-- basic_functions.R
+      |  |  |-- cal_z.R
+      |  |  |-- cpp_functions.cpp
+      |  |  |-- find_fishnet.R
+      |  |  |-- generate_model_sets.R
+      |  |  |-- matrix_calc.cpp
+      |  |  |-- plot_design.R
+      |  |  |-- Rcpp_functions.R
+      |  ||-- generate_data
+      |  |  |-- correlation_test_polynomial.R
+      |  |  |-- generate_covariate_data.R
+      |  |  |-- generate_fishnet_data.R
+      |  |  |-- generate_random_designs.R
+      |  |  |-- generate_transect_data_for_designs.R
+      |  ||-- generate_plots
+      |  |  |-- plot_depth_vs_pred_GAMM.R
+      |  |  |-- plot_optimal_designs.R
+      |  |  |-- plot_prob_coral.R
+      |  |  |-- plot_relative_efficiency.R
+      |  |  |-- plot_relative_efficiency_random_designs.R
+      |  |  |-- plot_utility_run_time_random_designs.R
+      |  ||-- models
+      |  |  |-- get_model_sets.R
+      |  |  |-- main_model_selection.R
+      |  |  |-- main_priors_GAMM.R
+      |  |  |-- main_priors_polynomial.R
+      |  |  |-- summarise_model_selection.R
+      |  |  |-- summarise_priors.R
+      |  ||-- utility
+      |  |  |-- approximate_utility_GAMM.R
+      |  |  |-- approximate_utility_pol_without_yre.R
+      |  |  |-- approximate_utility_pol_with_yre.R
+      |  |  |-- main_relative_utility_pol_without_yre.R
+      |  |  |-- main_relative_utility_pol_with_yre.R
+      |  |  |-- main_utility_random_designs_GAMM.R
+      |  |  |-- main_utility_run_time_GAMM.R
+      ||-- data
+      |  ||-- BE_data
+      |  |  |-- save_data.txt
+      |  ||-- BE_raster_data
+      |  |  |-- BE_raster.RData
+      |  |  |-- fishnets_diff_sizes.RData
+      |  |  |-- save_data.txt
+      |  ||-- transect_data
+      |  |  |-- data_for_design_fshsize_predang100_n50_dep50_len500.RData
+      |  |  |-- random_designs_fs.RData
+      |-- directory_tree.txt
+      |-- generate_tree.sh
+      |-- Model_Robust_Bayesian_Designs_for_Monitoring_of_Submerged_Shoals.Rproj
+      ||-- plots
+      |  ||-- comparisons
+      |  |  |-- Ex2_rel_util_rand_designs.jpeg
+      |  |  |-- Ex2_run_time.jpeg
+      |  ||-- designs
+      |  |  |-- Ex2_optimal_designs.jpeg
+      |  |  |-- Ex2_optimal_designs_prob.jpeg
+      |  |  |-- Ex2_relative_efficiency.jpeg
+      |  ||-- generate_data
+      |  |  |-- correlation_plots.pdf
+      |  |  |-- plot_generate_fishnet_data.pdf
+      |  |  |-- plot_generate_transect_data.pdf
+      |  |  |-- random_designs.pdf
+      |  ||-- models
+      |  |  |-- Ex2_depth_vs_predictor_GAMM.jpeg
+      ||-- sub_files
+      |  ||-- designs
+      |  |  |-- chain_designs_GAMM.sh
+      |  |  |-- chain_designs_poly.sh
+      |  |  |-- run_hpc.txt
+      |  |  |-- sub_angle_rest.pbs
+      |  |  |-- sub_com_iter.pbs
+      |  |  |-- sub_init_util.pbs
+      |  |  |-- sub_optimize_angle.pbs
+      |  |  |-- sub_sum_trans.pbs
+      |  |  |-- sub_util_angle.pbs
+      |  ||-- models
+      |  |  |-- run_hpc.txt
+      |  |  |-- sh_model_select.sh
+      |  |  |-- sh_priors.sh
+      |  |  |-- sub_model_select.pbs
+      |  |  |-- sub_priors_GAMM.sub
+      |  |  |-- sub_priors_pol.sub
+      |  ||-- utility
+      |  |  |-- run_hpc.txt
+      |  |  |-- sh_compare_run_time.sh
+      |  |  |-- sh_rel_utility.sh
+      |  |  |-- sh_util_random_GAMM.sh
+      |  |  |-- sub_compare_run_time.sub
+      |  |  |-- sub_rel_utility.sub
+      |  |  |-- sub_util_random_GAMM.sub
+
+# Instructions for Running the Codes and Summarising Results
+
+To regenerate the results for the Barracouta East Shoal study, please
+follow the instructions below. The main scripts are designed to be
+executed on a High-Performance Computer (HPC).
+
+## Step 1: Download Necessary Data
+
+1.  **Download Barracouta East Raster Data and save in
+    `data/BE_raster_data`**:
+    - URL: <https://doi.org/10.25845/p1sr-s997>
+2.  **Download Barracouta East R Data and save in `data/BE_data`**:
+    - URL: <https://doi.org/10.25845/p1sr-s997>
+    - Save the file as `Barracouta_East_Rdata.xlsx`.
+
+## Step 2: Generate Necessary Data
+
+Run the scripts in the `codes/generate_data` folder in the following
+order:
+
+1.  **Generate Fishnet Data**:
+    - Script: `generate_fishnet_data.R`
+2.  **Generate Covariate Data**:
+    - Script: `generate_covariate_data.R`
+3.  **Generate Random Designs**:
+    - Script: `generate_random_designs.R`
+4.  **Generate Transect Data for Designs**:
+    - Script: `generate_transect_data_for_designs.R`
+
+Run the following script to generate model sets:
+
+1.  **Generate Model Sets**:
+    - Script: `codes/models/get_model_sets.R`
+
+## Step 3: Run HPC Codes
+
+Follow the instructions provided in the `run_hpc.txt` file inside each
+of the following folders in the below order on a PBS system in the HPC.
+
+1.  **Models**:
+    - Folder: `sub_files/models`
+    - Once you have all the outputs, run:
+      - Script: `codes/models/summarise_priors.R`
+2.  **Designs**:
+    - Folder: `sub_files/designs`
+    - Once you have all the outputs, run:
+      - Script: `codes/designs/select_optimal_design.R`
+3.  **Utilities**:
+    - Folder: `sub_files/utility`
+
+## Step 4: Summarise the Results
+
+To generate the summary plots, run the scripts located in the
+`codes/generate_plots` folder:
+
+1.  **Plot Depth vs Predicted GAMM**:
+    - Script: `plot_depth_vs_pred_GAMM.R`
+2.  **Plot Optimal Designs**:
+    - Script: `plot_optimal_designs.R`
+3.  **Plot Probability of Coral**:
+    - Script: `plot_prob_coral.R`
+4.  **Plot Relative Efficiency**:
+    - Script: `plot_relative_efficiency.R`
+5.  **Plot Relative Efficiency of Random Designs**:
+    - Script: `plot_relative_efficiency_random_designs.R`
+6.  **Plot Utility Run Time of Random Designs**:
+    - Script: `plot_utility_run_time_random_designs.R`

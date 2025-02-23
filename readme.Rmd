@@ -1,6 +1,6 @@
 ---
 title: "Instruction Manual"
-output: html_document
+output: github_document
 ---
 
 ### The directory structure of the project is as follows: The purpose of each script within the 'main_scripts' and 'generate_plots' folders is documented directly in the respective script itself. 
