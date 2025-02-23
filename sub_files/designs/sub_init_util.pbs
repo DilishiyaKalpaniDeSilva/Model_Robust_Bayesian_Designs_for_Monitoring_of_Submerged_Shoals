@@ -1,0 +1,19 @@
+#!/bin/bash -l
+#PBS -l walltime=03:00:00
+#PBS -l select=1:ncpus=12:mem=15G
+#PBS -o outanderror
+#PBS -e outanderror
+
+cd $PBS_O_WORKDIR
+mkdir -p "outanderror"
+cd ../../
+mkdir -p "$log_path"
+
+module load r/4.0.3-foss-2020b
+
+export MC_CORES=12
+export OMP_NUM_THREADS=1
+
+R CMD BATCH --slave ${path} $TMPDIR/init.log
+cp $TMPDIR/init.log ${log_path}
+

@@ -1,0 +1,18 @@
+#!/bin/bash -l
+#PBS -l walltime=5:00:00
+#PBS -l select=1:ncpus=12:mem=15G
+#PBS -o outanderror
+#PBS -e outanderror
+
+cd $PBS_O_WORKDIR
+mkdir -p "outanderror"
+cd ../../
+mkdir -p "$log_path"
+
+module load r/4.0.3-foss-2020b
+
+export MC_CORES=6
+export OMP_NUM_THREADS=1
+
+R CMD BATCH --slave ${path} $TMPDIR/util_angle_${iter}_${indexTr}_${indexP}_${PBS_ARRAY_INDEX}.log
+cp $TMPDIR/util_angle_${iter}_${indexTr}_${indexP}_${PBS_ARRAY_INDEX}.log ${log_path}

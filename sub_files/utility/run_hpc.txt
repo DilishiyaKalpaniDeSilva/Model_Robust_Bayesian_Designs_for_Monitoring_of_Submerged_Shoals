@@ -1,0 +1,26 @@
+%% run line 4-8 for exp utility comparison
+%% change the input parameters using sub_util_random_GAMM.sub file
+%% change <path_to_R_project> to actual path of the R project
+cd ~/<path_to_R_project>/Model_Robust_Bayesian_Design_Monitoring_of_submerged_shoals/sub_files/utility
+dos2unix sub_util_random_GAMM.sub
+dos2unix sh_util_random_GAMM.sh
+chmod u+x sh_util_random_GAMM.sh
+./sh_util_random_GAMM.sh
+
+%% run line 13-17 for run-time comparison
+%% change the input parameters using sh_compare_run_time.sh file
+%% change <path_to_R_project> to actual path of the R project
+cd ~/<path_to_R_project>/Model_Robust_Bayesian_Design_Monitoring_of_submerged_shoals/sub_files/utility
+dos2unix sub_compare_run_time.sub
+dos2unix sh_compare_run_time.sh
+chmod u+x sh_compare_run_time.sh
+./sh_compare_run_time.sh
+
+%% run line 22-26 to obtain relative utilities
+%% change the input parameters using sh_rel_utility.sh file
+%% change <path_to_R_project> to actual path of the R project
+cd ~/<path_to_R_project>/Model_Robust_Bayesian_Design_Monitoring_of_submerged_shoals/sub_files/utility
+dos2unix sub_rel_utility.sub
+dos2unix sh_rel_utility.sh
+chmod u+x sh_rel_utility.sh
+./sh_rel_utility.sh

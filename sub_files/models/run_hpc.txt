@@ -1,0 +1,16 @@
+%% run line 4-7 for model selection
+%% change the input parameters using sh_model_select.sh file
+%% change <path_to_R_project> to the path of the R project
+cd ~/<path_to_R_project>/Model_Robust_Bayesian_Design_Monitoring_of_submerged_shoals/sub_files/models
+dos2unix sub_model_select.pbs sh_model_select.sh
+chmod u+x sh_model_select.sh
+./sh_model_select.sh
+
+%% run line 12-15 code lines to generate prior for design
+%% change the input parameters using sh_priors.sh file
+%% change <path_to_R_project> to the path of the R project
+cd ~/<path_to_R_project>/Model_Robust_Bayesian_Design_Monitoring_of_submerged_shoals/sub_files/models
+dos2unix sub_priors_GAMM.sub sub_priors_pol.sub sh_priors.sh
+chmod u+x sh_priors.sh
+./sh_priors.sh
+

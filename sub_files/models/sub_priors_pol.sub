@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#PBS -l walltime=15:00:00
+#PBS -l select=1:ncpus=6:mem=72G
+#PBS -o outanderror
+#PBS -e outanderror
+
+cd $PBS_O_WORKDIR
+cd ../../
+mkdir -p "$log_path"
+
+module load r/4.0.3-foss-2020b
+
+R CMD BATCH --slave ${path} ${log_path}pol_O${indexO}_Y${PBS_ARRAY_INDEX}.log

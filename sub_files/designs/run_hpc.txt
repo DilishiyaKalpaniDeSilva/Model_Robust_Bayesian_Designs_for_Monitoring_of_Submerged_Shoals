@@ -1,0 +1,27 @@
+%% run line 4-13 to run GAMM designs, 
+%% change the input parameters using chain_designs_GAMM.sh file
+%% change <path_to_R_project> to the path of the R project
+cd ~/<path_to_R_project>/Model_Robust_Bayesian_Design_Monitoring_of_submerged_shoals/sub_files/designs
+dos2unix sub_init_util.pbs
+dos2unix sub_util_angle.pbs
+dos2unix sub_angle_rest.pbs
+dos2unix sub_optimize_angle.pbs
+dos2unix sub_sum_trans.pbs
+dos2unix sub_com_iter.pbs
+dos2unix chain_designs_GAMM.sh
+chmod u+x chain_designs_GAMM.sh
+./chain_designs_GAMM.sh
+
+%% run line 18-27 to run polynomial designs, 
+%% change the input parameters using chain_designs_poly.sh file
+%% change <path_to_R_project> to the path of the R project
+cd ~/<path_to_R_project>/Model_Robust_Bayesian_Design_Monitoring_of_submerged_shoals/sub_files/designs/
+dos2unix sub_init_util.pbs
+dos2unix sub_util_angle.pbs
+dos2unix sub_angle_rest.pbs
+dos2unix sub_optimize_angle.pbs
+dos2unix sub_sum_trans.pbs
+dos2unix sub_com_iter.pbs
+dos2unix chain_designs_poly.sh
+chmod u+x chain_designs_poly.sh
+./chain_designs_poly.sh
